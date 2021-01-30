@@ -12,6 +12,14 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
 
 
+#first_list = [texts[0][0], texts[0][1], texts[0][0]]
+print("First record of texts, {} texts {} at time {}".format(texts[0][0], texts[0][1], texts[0][2]))
+#last_list = [calls[len(calls)-1][0], calls[len(calls)-1][1], calls[len(calls)-1][2], calls[len(calls)-1][3])]
+print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(calls[len(calls)-1][0], calls[len(calls)-1][1], calls[len(calls)-1][2], calls[len(calls)-1][3]))
+
+#print(texts)
+#print(calls)
+
 """
 TASK 0:
 What is the first record of texts and what is the last record of calls?
