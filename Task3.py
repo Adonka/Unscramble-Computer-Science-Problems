@@ -27,17 +27,16 @@ for i in range(len(calls)):
             num_dic[calls[i][j]] += 1
             if "(080)" in calls[i][j]:
                 Bangalore_dic[calls[i][j]] += 1
+        j += 1
 
 phone_list = num_dic.keys()
-phone_list = phone_list.sort()
+phone_list = sorted(phone_list)
 Bangalore_list = Bangalore_dic.keys()
 
 num_dic_sorts = sorted(num_dic, key=num_dic.__getitem__)
 
 sum_Bang = sum(Bangalore_dic.values())
 sum_val = sum(num_dic.values())
-max_val = max(num_dic.values())
-max_key = max(num_dic, key=num_dic.get)
 
 percentage = int((sum_Bang/sum_val) * 100)
 

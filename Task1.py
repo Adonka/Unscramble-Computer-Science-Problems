@@ -18,21 +18,19 @@ count = 0
 for i in range(len(texts)):
     j = 0
     while(j < 2):
-        for number in texts[i][j]:
-            if number not in num_dic:
-                num_dic[number] = 1
-            else:
-                num_dic[number] += 1
-            j += 1
+        if texts[i][j] not in num_dic:
+            num_dic[texts[i][j]] = 1
+        else:
+            num_dic[texts[i][j]] += 1
+        j += 1
 for i in range(len(calls)):
     j = 0
     while(j < 2):
-        for number in calls[i][j]:
-            if number not in num_dic:
-                num_dic[number] = 1
-            else:
-                num_dic[number] += 1
-            j += 1
+        if calls[i][j] not in num_dic:
+            num_dic[calls[i][j]] = 1
+        else:
+            num_dic[calls[i][j]] += 1
+        j += 1
 #asigned the size of the dictionary
 count = len(num_dic)
 
