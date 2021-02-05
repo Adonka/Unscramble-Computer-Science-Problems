@@ -23,6 +23,7 @@ for i in range(len(texts)):
         else:
             num_dic[texts[i][j]] += 1
         j += 1
+        
 for i in range(len(calls)):
     j = 0
     while(j < 2):
@@ -34,6 +35,7 @@ for i in range(len(calls)):
 #asigned the size of the dictionary
 count = len(num_dic)
 
+#Print the output.
 print("There are {} different telephone numbers in the records.".format(count))
 """
 TASK 1:

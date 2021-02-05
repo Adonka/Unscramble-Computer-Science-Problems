@@ -17,6 +17,7 @@ num_texts = {}
 num_calls = {}
 num_call_marketing = set()
 
+#Iterate calls and texts lists to store the output into two dictionaries.
 for i in range(len(texts)):
     j = 0
     
@@ -37,12 +38,12 @@ for i in range(len(calls)):
     elif calls[i][j] in num_calls:
             num_calls[calls[i][j]] += 1
             
-
-
+#Iterate the num_call dictionary to add the key which does not exist in texts dictionary.
 for key, value in num_calls.items():
     if key not in num_texts:
         num_call_marketing.add(key)
 
+#Print the the output of Marketing number set.
 print("These numbers could be telemarketers: " + str(num_call_marketing))
 
 """

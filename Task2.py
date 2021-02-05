@@ -20,10 +20,11 @@ for i in range(len(calls)):
             num_dic[calls[i][j]] += int(calls[i][3])
         j += 1
 
+#Find the max value from the value of the num_dic dictionary as well as the key.
 max_val = max(num_dic.values())
 max_key = max(num_dic, key=num_dic.get)
 
-
+#Print the output.
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(max_key, max_val))
 
 """

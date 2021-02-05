@@ -7,9 +7,11 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+#Initialize two dictionaries.
 num_dic = {}
 Bangalore_dic = {}
 
+#Iterate the calls records from the imported calls list to store the each number into two dictionaries.
 for i in range(len(calls)):
     j = 0
     while(j < 2):
@@ -24,15 +26,18 @@ for i in range(len(calls)):
                 Bangalore_dic[calls[i][j]] += 1
         j += 1
 
+#Create the list of keys from the Bangalore_dic dictionary.
 Bangalore_list = Bangalore_dic.keys()
 
+#Calculate the sum from each dictionary
 sum_Bang = sum(Bangalore_dic.values())
 sum_val = sum(num_dic.values())
 
+#Calculate the percentage from the sum.
 percentage = int((sum_Bang/sum_val) * 100)
 
-print("The numbers called by people in Bangalore have codes: {}".format(Bangalore_list) )
-
+#Print the output.
+print("The numbers called by people in Bangalore have codes: {}".format(Bangalore_list))
 print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percentage))
 
 """
