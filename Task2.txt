@@ -1,0 +1,6 @@
+The size of the call record can be presented as n.
+For loop iterates the call records and store the Bangalore number.
+The equation is O(n+n) = O(2n) so far. 
+Then it calculate the sum of num_dic to give the max value and max index.
+
+Therefore time complexiy is O(n + 2n) = O(3n)

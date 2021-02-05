@@ -3,11 +3,6 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
-
-with open('texts.csv', 'r') as f:
-    reader = csv.reader(f)
-    texts = list(reader)
-
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
@@ -29,11 +24,7 @@ for i in range(len(calls)):
                 Bangalore_dic[calls[i][j]] += 1
         j += 1
 
-phone_list = num_dic.keys()
-phone_list = sorted(phone_list)
 Bangalore_list = Bangalore_dic.keys()
-
-num_dic_sorts = sorted(num_dic, key=num_dic.__getitem__)
 
 sum_Bang = sum(Bangalore_dic.values())
 sum_val = sum(num_dic.values())

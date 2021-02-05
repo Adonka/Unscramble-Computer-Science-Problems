@@ -1,0 +1,6 @@
+The size of each record can be presented as n and m.
+For loop will iterate the number of the size n and m.
+Each for loop has while loop that loops twice. Therefore,
+ 2n and 2m. 
+
+ Therefore, the time complexity is O(2m + 2n + 1)

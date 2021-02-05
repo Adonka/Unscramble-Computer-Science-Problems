@@ -1,0 +1,5 @@
+The size of each record can be presented as n and m.
+Then we print the first of text records and the last of call records with the size of n and m.
+Since, the constant time is 1 and we have two of printing, the time complexity can be presented as 1 + 1 = 2.
+
+Therefore, the worst case of time complexity is O(n+m+2)

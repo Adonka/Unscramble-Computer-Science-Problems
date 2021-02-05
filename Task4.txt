@@ -1,0 +1,8 @@
+The size of each record can be presented as n and m.
+For loop will iterate the number of the size n and m.
+One for loop has while loop that loops twice. Therefore,
+ 2n and m. 
+ Finally, it iterate each key of x size of a dictionary 
+ to make x size of set which include the output of the for loop.
+
+ Therefore, the time complexity is O(2m + n + n ) = O(2m + 2n)
