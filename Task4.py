@@ -20,28 +20,26 @@ num_call_marketing = set()
 for i in range(len(texts)):
     j = 0
     
-    for number in texts[i][j]:
-        while(j < 2):
-            if number not in num_texts:
-                num_texts[number] = 1
-            else:
-                num_texts[number] += 1
-            j += 1
-print(num_texts)
+    
+    while(j < 2):
+        if texts[i][j] not in num_texts:
+            num_texts[texts[i][j]] = 1
+        else:
+            num_texts[texts[i][j]] += 1
+        j += 1
+
 for i in range(len(calls)):
     j = 0
-    while(j < 2):
-        for number in calls[i][j]:
-            if number not in num_calls and number != calls[i][1]:
-                num_calls[number] = 1
-                j += 1
-            elif number in num_calls:
-                num_calls[number] += 1
-                j += 1
-            else:
-                j += 1
+    
+    if calls[i][j] not in num_calls:
+        num_calls[calls[i][j]] = 1
 
-for key in num_calls.items():
+    elif calls[i][j] in num_calls:
+            num_calls[calls[i][j]] += 1
+            
+
+
+for key, value in num_calls.items():
     if key not in num_texts:
         num_call_marketing.add(key)
 
