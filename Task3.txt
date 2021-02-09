@@ -1,7 +1,6 @@
 The size of the call record can be presented as n.
 For loop iterates the call records and store the Bangalore number.
-The equation is O(n+n) = O(2n) so far. Searching in dictionary is constant, so O(1).
-Then it calculate the sum of num_dic and Bangalore_dic to give the percentage of Bangalore numbers.
-The size of each dictionary can be represented as x and y. 
+The equation in the worst case senario is O(n + n) = O(2n) so far. Searching in sets is constant, so O(1).
+Then it calculate the length of Bangalore_set with counts to give the percentage of outgoing Bangalore numbers to the other Bangalore numbers.
 
-Therefore time complexiy is O(n + 2n + x + y) = O(3n + x + y)
+Therefore the optimized time complexiy is O(n).

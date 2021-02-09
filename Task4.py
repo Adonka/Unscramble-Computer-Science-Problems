@@ -12,9 +12,11 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-#Dictionary can check if the number already exits or not. Then we can count by the size of dictionary.
-num_texts = {}
-num_calls = {}
+#Set can check if the number already exits or not. 
+text_senders = set()
+callers = set()
+text_recievers = set()
+call_recievers = set()
 num_call_marketing = set()
 
 #Iterate calls and texts lists to store the output into two dictionaries.
@@ -23,28 +25,33 @@ for i in range(len(texts)):
     
     
     while(j < 2):
-        if texts[i][j] not in num_texts:
-            num_texts[texts[i][j]] = 1
+        if j == 0 and texts[i][j] not in text_senders:
+            text_senders.add(texts[i][j])
         else:
-            num_texts[texts[i][j]] += 1
+            text_recievers.add(texts[i][j])
         j += 1
 
 for i in range(len(calls)):
     j = 0
     
-    if calls[i][j] not in num_calls:
-        num_calls[calls[i][j]] = 1
-
-    elif calls[i][j] in num_calls:
-            num_calls[calls[i][j]] += 1
+    while(j < 2):
+        if j == 0 and calls[i][j] not in callers:
+            callers.add(texts[i][j])
+        else:
+            call_recievers.add(texts[i][j])
+        j += 1
             
-#Iterate the num_call dictionary to add the key which does not exist in texts dictionary.
-for key, value in num_calls.items():
-    if key not in num_texts:
-        num_call_marketing.add(key)
+#Iterate the callers set to add the key which does not exist in incoming call and texts.
+for outgoing_call in callers:
+    if outgoing_call not in text_recievers: 
+        if outgoing_call not in text_senders:
+            if outgoing_call not in call_recievers:
+                num_call_marketing.add(outgoing_call)
+
+marketing = list(num_call_marketing)
 
 #Print the the output of Marketing number set.
-print("These numbers could be telemarketers: " + str(num_call_marketing))
+print("These numbers could be telemarketers: {}".format(marketing))
 
 """
 TASK 4:

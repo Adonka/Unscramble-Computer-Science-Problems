@@ -7,31 +7,42 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-#Initialize two dictionaries.
-num_dic = {}
-Bangalore_dic = {}
+#Initialize sets and lists.
+callers = []
+call_recievers = []
+Bangalore_set = set()
+Bangalore_recievers_set = set()
+Bangalore_call_set = set()
+count = 0
+
 
 #Iterate the calls records from the imported calls list to store the each number into two dictionaries.
 for i in range(len(calls)):
     j = 0
     while(j < 2):
-        if calls[i][j] not in num_dic:
-            num_dic[calls[i][j]] = 1
-            if "(080)" in calls[i][j]:
-                Bangalore_dic[calls[i][j]] = 1
-
-        else:
-            num_dic[calls[i][j]] += 1
-            if "(080)" in calls[i][j]:
-                Bangalore_dic[calls[i][j]] += 1
+        if "(" and ")" in calls[i][j]:
+            f = calls[i][j].find(")")
+            Bangalore_set.add(calls[i][j][1:f])
+            if "(080)" in calls[i][j] and j == 0:
+                callers.append(calls[i][j])
+                if "(080)" in calls[i][1]:
+                    count += 1
+            elif "(080)" in calls[i][j] and j == 1:
+                call_recievers.append(calls[i][j])
+        elif " " in calls[i][j]:
+            spliter = calls[i][j].split(" ")
+            Bangalore_set.add(spliter[0])
+        elif calls[i][j].startswith("140"):
+            Bangalore_call_set.add("140")  
         j += 1
 
-#Create the list of keys from the Bangalore_dic dictionary.
-Bangalore_list = Bangalore_dic.keys()
+#Create the list of keys from the Bangalore_set set.
+Bangalore_list = list(Bangalore_set)
+Bangalore_list = sorted(Bangalore_list)
 
-#Calculate the sum from each dictionary
-sum_Bang = sum(Bangalore_dic.values())
-sum_val = sum(num_dic.values())
+#Calculate the sums from counter and length of the list
+sum_Bang = count
+sum_val = len(callers)
 
 #Calculate the percentage from the sum.
 percentage = int((sum_Bang/sum_val) * 100)
