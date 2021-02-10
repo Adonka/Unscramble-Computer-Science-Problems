@@ -1,6 +1,8 @@
 The size of the call record can be presented as n.
 For loop iterates the call records and store the Bangalore number.
-The equation in the worst case senario is O(n + n) = O(2n) so far. Searching in sets is constant, so O(1).
+The equation in the worst case senario is O(n) = O(n) so far. Searching in sets is constant, so O(1).
 Then it calculate the length of Bangalore_set with counts to give the percentage of outgoing Bangalore numbers to the other Bangalore numbers.
+When set is converted into list, the list is sorted so the time complexity is O(nlogn). 
 
-Therefore the optimized time complexiy is O(n).
+
+Therefore the optimized time complexiy is O(nlogn + n) = O(nlogn).

@@ -27,7 +27,7 @@ for i in range(len(texts)):
     while(j < 2):
         if j == 0 and texts[i][j] not in text_senders:
             text_senders.add(texts[i][j])
-        else:
+        elif j == 1 and texts[i][j] not in text_recievers:
             text_recievers.add(texts[i][j])
         j += 1
 
@@ -36,9 +36,9 @@ for i in range(len(calls)):
     
     while(j < 2):
         if j == 0 and calls[i][j] not in callers:
-            callers.add(texts[i][j])
-        else:
-            call_recievers.add(texts[i][j])
+            callers.add(calls[i][j])
+        elif j == 1 and calls[i][j] not in call_recievers:
+            call_recievers.add(calls[i][j])
         j += 1
             
 #Iterate the callers set to add the key which does not exist in incoming call and texts.
@@ -49,6 +49,7 @@ for outgoing_call in callers:
                 num_call_marketing.add(outgoing_call)
 
 marketing = list(num_call_marketing)
+marketing = sorted(marketing)
 
 #Print the the output of Marketing number set.
 print("These numbers could be telemarketers: {}".format(marketing))

@@ -9,32 +9,31 @@ with open('calls.csv', 'r') as f:
 
 #Initialize sets and lists.
 callers = []
-call_recievers = []
 Bangalore_set = set()
-Bangalore_recievers_set = set()
-Bangalore_call_set = set()
 count = 0
 
 
-#Iterate the calls records from the imported calls list to store the each number into two dictionaries.
-for i in range(len(calls)):
-    j = 0
-    while(j < 2):
-        if "(" and ")" in calls[i][j]:
-            f = calls[i][j].find(")")
-            Bangalore_set.add(calls[i][j][1:f])
-            if "(080)" in calls[i][j] and j == 0:
-                callers.append(calls[i][j])
-                if "(080)" in calls[i][1]:
-                    count += 1
-            elif "(080)" in calls[i][j] and j == 1:
-                call_recievers.append(calls[i][j])
-        elif " " in calls[i][j]:
-            spliter = calls[i][j].split(" ")
-            Bangalore_set.add(spliter[0])
-        elif calls[i][j].startswith("140"):
-            Bangalore_call_set.add("140")  
-        j += 1
+#Iterate the calls records
+for call in calls:
+
+    # check whether caller is having area code (080) or not.
+    if call[0].startswith("(080)"):
+        callers.append(call[0])   # this operation if for finding out percentage later
+
+        # If yes, then fetch the area code of receiver's number
+        if call[1].startswith("(0"):
+            index = call[1].find(")")
+            Bangalore_set.add(call[1][0:index+1])
+            if call[1].startswith("(080)"):   # this operation if for finding out percentage later
+                count += 1
+
+        # If yes, the fetch mobile number prefix
+        if call[1].startswith(("7", "8", "9")):
+            Bangalore_set.add(call[1][0:4])
+
+        # If yes, then fetch telemarketers' number area code.
+        if call[1].startswith("140"):
+            Bangalore_set.add("140")
 
 #Create the list of keys from the Bangalore_set set.
 Bangalore_list = list(Bangalore_set)
@@ -45,11 +44,12 @@ sum_Bang = count
 sum_val = len(callers)
 
 #Calculate the percentage from the sum.
-percentage = int((sum_Bang/sum_val) * 100)
+percentage = (sum_Bang/sum_val) * 100
 
 #Print the output.
-print("The numbers called by people in Bangalore have codes: {}".format(Bangalore_list))
-print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percentage))
+print("The numbers called by people in Bangalore have codes: ")
+print(*Bangalore_list, sep="\n")
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(percentage, 2)))
 
 """
 TASK 3:

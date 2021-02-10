@@ -2,6 +2,6 @@ The size of each record can be presented as n and m.
 For loop will iterate the number of the size n and m.
 One for loop has while loop that loops twice. Therefore, the time complexity
  n + 2n and m + 2m. 
- Finally, it iterate each element of x size of callers set searching each element in other sets.
+ Finally, it iterate each element of x size of callers set searching each element in other sets before sorting the marketing numbers. 
 
- Therefore, the time complexity is O(2n + n + 2m + m + x ). Its optimization is O(n + m + x)
+ Therefore, the time complexity is O(2n + n + 2m + m + x + xlogx). Its optimization is O(xlogx)
