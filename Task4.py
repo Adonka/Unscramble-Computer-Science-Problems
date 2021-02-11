@@ -52,8 +52,8 @@ marketing = list(num_call_marketing)
 marketing = sorted(marketing)
 
 #Print the the output of Marketing number set.
-print("These numbers could be telemarketers: {}".format(marketing))
-
+print("These numbers could be telemarketers: ")
+print(*marketing, sep="\n")
 """
 TASK 4:
 The telephone company want to identify numbers that might be doing
